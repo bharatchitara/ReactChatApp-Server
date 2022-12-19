@@ -12,9 +12,14 @@ const socketIO = require('socket.io')(http, {
 app.use(cors())
 let users = []
 
+
 socketIO.on('connection', (socket) => {
-    console.log(` ${socket.id} user just connected!`)  
+  
+    // console.log(socket)
+    console.log(` ${socket.id} user just connected!`)
+    
     socket.on("message", data => {
+      console.log(data.name)
       socketIO.emit("messageResponse", data)
     })
 
